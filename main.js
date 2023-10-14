@@ -1,20 +1,13 @@
 import './style.css'
-import { viewCardQuestion } from './js/viewCardQuestions'
-import { events } from './js/events'
+import { Questions, answerQuestion, optionsQuestion } from './js/models/Question'
+import { headerQuestion, cardBody, titleViewQuestion, optionsViewQuestion } from './js/models/UI'
 
-document.querySelector('#app').innerHTML = `
-  <section class="container">
-    <header>
-      <p id="aciertos"> Aciertos </p>
-    </header>
+const cardQuiz = document.querySelector('.card-quiz')
+cardQuiz.appendChild(headerQuestion())
+cardQuiz.appendChild(cardBody())
 
-    <section class="title-quiz">
-      <h1> Quiz with JS! </h1>
-    </section>
-    
-    <section id="cardQuestions" class="card-quiz"></section>
+const cardHeader = document.querySelector('.card-header')
+cardHeader.appendChild(titleViewQuestion(Questions()))
 
-  </section>
-`
-viewCardQuestion(document.querySelector("#cardQuestions"))
-events(document.querySelectorAll('.response'))
+optionsViewQuestion(optionsQuestion)
+// console.log(optionsQuestion.map(item => item))
