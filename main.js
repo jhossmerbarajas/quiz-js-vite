@@ -1,13 +1,9 @@
 import './style.css'
-import { Questions, answerQuestion, optionsQuestion } from './js/models/Question'
-import { headerQuestion, cardBody, titleViewQuestion, optionsViewQuestion } from './js/models/UI'
+import { viewCardQuestion } from './js/models/UI'
+import { questionIndex } from './js/models/quiz'
+import { events } from './js/events'
 
-const cardQuiz = document.querySelector('.card-quiz')
-cardQuiz.appendChild(headerQuestion())
-cardQuiz.appendChild(cardBody())
+document.querySelector('#container', viewCardQuestion())
+events(document.querySelectorAll('.response'))
 
-const cardHeader = document.querySelector('.card-header')
-cardHeader.appendChild(titleViewQuestion(Questions()))
-
-optionsViewQuestion(optionsQuestion)
-// console.log(optionsQuestion.map(item => item))
+console.log(questionIndex())

@@ -1,34 +1,38 @@
-export function headerQuestion () {
-	const headerQuestion = document.createElement('div')
-	headerQuestion.classList.add('card-header')
+import { data } from '../data/data'
+
+export function viewCardQuestion () {
+	const container = document.getElementById('container')
+
 	
-	return headerQuestion
-}
+	data.forEach((question) => {
+		const cardQuestions = document.createElement('section')
+		cardQuestions.classList.add('card-quiz')
 
-export function titleViewQuestion(question) {
-	const titleQuestion = document.createElement('h1')
-	titleQuestion.innerHTML = question
-	titleQuestion.classList.add('question-title')
+		const divCardTitle = document.createElement('div')
+		divCardTitle.classList.add('card-header')
 
-	return titleQuestion
-}
+		const questionTitle = document.createElement('h2')
+		questionTitle.classList.add('question-title')
+		questionTitle.textContent = question.question
 
-export function cardBody () {
-	const cardBody = document.createElement('div')
-	cardBody.classList.add('card-body')
 
-	return cardBody
-}
+		const divCardBody = document.createElement('div')
+		divCardBody.classList.add('card-body')
 
-export function optionsViewQuestion(options) {
-  const cardBodyContainer = document.querySelector('.card-body')
-  cardBodyContainer.textContent = ""
+		question.options.forEach((option) => {
+			const optionItem = document.createElement('button')
+			optionItem.classList.add('response')
+			optionItem.textContent = option
+			divCardBody.appendChild(optionItem)
+		})
+		
+		divCardTitle.appendChild(questionTitle)
 
-  options.forEach((option) => {
-  		option.forEach((item, i) => {
-  			const button = document.createElement('button')
-  			button.textContent = item
-  			cardBodyContainer.append(button)
-  		})
-  });
+		cardQuestions.appendChild(divCardTitle)
+		cardQuestions.appendChild(divCardBody)
+
+		container.appendChild(cardQuestions)
+	})
+
+	return container
 }
