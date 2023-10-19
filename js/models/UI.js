@@ -1,38 +1,30 @@
-import { data } from '../data/data'
+export function  titleViewQuestion(question) {
+	const text = document.querySelector("#question-title")
+	text.innerHTML = question
+}
 
-export function viewCardQuestion () {
-	const container = document.getElementById('container')
-
+export function optionsViewResponse (option, correctAnswer) {
+	const optionsContainer = document.querySelector('#card-body')
+	/* se le agrega el innerHTML para que, cuando vuelva a 
+	   recorrerlo, lo "limpie" y pueda pintar las 
+	   siguirentes optiones
+	 */
+	optionsContainer.innerHTML = "" 
 	
-	data.forEach((question) => {
-		const cardQuestions = document.createElement('section')
-		cardQuestions.classList.add('card-quiz')
+	
+	for(let i = 0; i < option.length; i++) {
+		const button = document.createElement('button')
+		button.innerText = option[i]
+		button.addEventListener('click', () => correctAnswer(option[i]))
+		optionsContainer.append(button)
+	}
+}
 
-		const divCardTitle = document.createElement('div')
-		divCardTitle.classList.add('card-header')
-
-		const questionTitle = document.createElement('h2')
-		questionTitle.classList.add('question-title')
-		questionTitle.textContent = question.question
-
-
-		const divCardBody = document.createElement('div')
-		divCardBody.classList.add('card-body')
-
-		question.options.forEach((option) => {
-			const optionItem = document.createElement('button')
-			optionItem.classList.add('response')
-			optionItem.textContent = option
-			divCardBody.appendChild(optionItem)
-		})
-		
-		divCardTitle.appendChild(questionTitle)
-
-		cardQuestions.appendChild(divCardTitle)
-		cardQuestions.appendChild(divCardBody)
-
-		container.appendChild(cardQuestions)
-	})
-
-	return container
+export function viewScore (score) {
+	const gameOver = `
+		<h3> Result </h3>
+		<p> Your score ${score} </p>
+	`
+	const containerQuiz = document.getElementById('container')
+	containerQuiz.innerHTML = gameOver
 }

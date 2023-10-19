@@ -15,3 +15,5 @@ export const data = [
 		"options": ["Caracas", "Quito", "Madrid", "Quito"]
 	}
 ]
+
+export const questions = data.map(items => items)
