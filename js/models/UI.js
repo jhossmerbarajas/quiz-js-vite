@@ -1,3 +1,5 @@
+import { newGame } from '../newGame'
+
 export function  titleViewQuestion(question) {
 	const text = document.querySelector("#question-title")
 	text.innerHTML = question
@@ -22,8 +24,10 @@ export function optionsViewResponse (option, correctAnswer) {
 
 export function viewScore (score) {
 	const gameOver = `
-		<h3> Result </h3>
-		<p> Your score ${score} </p>
+		<div class="result">
+			<p> Your score: <strong>  ${score} </strong></p>
+			<button class="newgame"> new game </button>
+		</div>
 	`
 	const containerQuiz = document.getElementById('container')
 	containerQuiz.innerHTML = gameOver

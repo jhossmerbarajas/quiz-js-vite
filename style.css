@@ -3,14 +3,44 @@
   margin: 0;
 }
 
+body {
+    background: #ccc;
+}
+
 .container {
-  background: #ccc;
   width: 100%;
 
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
+
+}
+
+.container header  {
+  background: #242424;
+  padding: 15px;
+  width: 100%;
+  
+}
+
+.container header ul {
+  margin: 0px 15px 00px 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container header ul > a {
+  text-decoration: none;
+  color: #fff
+}
+
+.container header ul > button {
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .container > .title-quiz {
@@ -59,4 +89,26 @@
   border: none;
   font-size: 15px;
   border-radius: 5px;
+}
+
+
+/* result view */
+.result {
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  font-size: 50px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.newgame {
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
 }
